@@ -1,9 +1,9 @@
 ﻿namespace HouseholdTasks.Models
 {
-    public enum Responsavel
+    public class Responsavel
     {
-        Guilherme = 1,
-        Miguel = 2,
-        Lorenzo = 3
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public List<Tarefa> Tarefas { get; set; }
     }
 }

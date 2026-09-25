@@ -4,6 +4,7 @@ using HouseholdTasks.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdTasks.Migrations
 {
     [DbContext(typeof(HouseholdTasksDbContext))]
-    partial class HouseholdTasksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260925235402_CriarEntidadeResponsavel")]
+    partial class CriarEntidadeResponsavel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

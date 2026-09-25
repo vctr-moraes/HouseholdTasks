@@ -42,10 +42,6 @@ namespace HouseholdTasks.Data.Mappings
                 .HasMaxLength(500);
 
             builder
-                .Property(t => t.Responsavel)
-                .IsRequired();
-
-            builder
                 .Property(t => t.Importancia)
                 .IsRequired();
         }

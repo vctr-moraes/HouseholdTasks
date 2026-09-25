@@ -9,7 +9,8 @@
         public DateOnly DataConclusao { get; set; }
         public Status Status { get; set; }
         public string? Observacoes { get; set; }
-        public Responsavel Responsavel { get; set; }
         public Importancia Importancia { get; set; }
+        public Responsavel Responsavel { get; set; }
+        public Guid ResponsavelId { get; set; }
     }
 }
