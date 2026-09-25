@@ -1,4 +1,4 @@
-﻿namespace HouseholdTasks
+﻿namespace HouseholdTasks.Models
 {
     public enum Importancia
     {

@@ -1,6 +1,6 @@
-﻿namespace HouseholdTasks.Models
+﻿namespace HouseholdTasks.ViewModels
 {
-    public enum Responsavel
+    public enum ResponsavelViewModel
     {
         Guilherme = 1,
         Miguel = 2,

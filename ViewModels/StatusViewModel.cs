@@ -1,6 +1,6 @@
-﻿namespace HouseholdTasks.Models
+﻿namespace HouseholdTasks.ViewModels
 {
-    public enum Status
+    public enum StatusViewModel
     {
         Nova = 1,
         EmAndamento = 2,
