@@ -1,4 +1,6 @@
 using HouseholdTasks.Data;
+using HouseholdTasks.Data.Repositories;
+using HouseholdTasks.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +28,10 @@ namespace HouseholdTasks
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<ApplicationDbContext>();
+            builder.Services.AddScoped<HouseholdTasksDbContext>();
+            builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 
             var app = builder.Build();
 
