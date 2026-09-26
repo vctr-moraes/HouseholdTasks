@@ -8,5 +8,11 @@ namespace HouseholdTasks.ViewModels.Responsaveis
 
         [Display(Name = "Nome")]
         public string Nome { get; set; }
+
+        public VisualizarResponsaveisViewModel(Guid id, string nome)
+        {
+            Id = id;
+            Nome = nome;
+        }
     }
 }

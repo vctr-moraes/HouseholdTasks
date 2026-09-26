@@ -32,6 +32,7 @@ namespace HouseholdTasks
             builder.Services.AddScoped<ApplicationDbContext>();
             builder.Services.AddScoped<HouseholdTasksDbContext>();
             builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
+            builder.Services.AddScoped<IResponsavelRepository, ResponsavelRepository>();
 
             var app = builder.Build();
 

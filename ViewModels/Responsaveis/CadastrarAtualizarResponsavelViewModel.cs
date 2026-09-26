@@ -11,5 +11,13 @@ namespace HouseholdTasks.ViewModels.Responsaveis
         [Required(ErrorMessage = "Informe o nome")]
         [MaxLength(100, ErrorMessage = "O nome não pode ter mais de 100 caracteres.")]
         public string Nome { get; set; }
+
+        public CadastrarAtualizarResponsavelViewModel() { }
+
+        public CadastrarAtualizarResponsavelViewModel(Guid id, string nome)
+        {
+            Id = id;
+            Nome = nome;
+        }
     }
 }
