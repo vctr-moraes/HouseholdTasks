@@ -1,4 +1,4 @@
-﻿namespace HouseholdTasks.ViewModels
+﻿namespace HouseholdTasks.ViewModels.Tarefas
 {
     public enum ImportanciaViewModel
     {

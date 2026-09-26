@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HouseholdTasks.ViewModels
+namespace HouseholdTasks.ViewModels.Tarefas
 {
     public class CriarTarefaViewModel
     {
