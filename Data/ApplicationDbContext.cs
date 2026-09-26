@@ -11,6 +11,7 @@ namespace HouseholdTasks.Data
         public HouseholdTasksDbContext(DbContextOptions<HouseholdTasksDbContext> options) : base(options) { }
 
         public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<Responsavel> Responsaveis { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
