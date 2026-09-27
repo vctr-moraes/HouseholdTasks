@@ -4,6 +4,7 @@ using HouseholdTasks.ViewModels.Responsaveis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+[Controller]
 public class ResponsavelController : Controller
 {
     private readonly IResponsavelRepository _repository;
@@ -24,6 +25,7 @@ public class ResponsavelController : Controller
         return View(responsaveis);
     }
 
+    [Route("/Detalhes/{id:guid}")]
     public async Task<IActionResult> Details(Guid id)
     {
         var responsavel = await _repository.ObterPorId(id);
