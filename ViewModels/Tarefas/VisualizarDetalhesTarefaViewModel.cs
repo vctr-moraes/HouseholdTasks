@@ -4,6 +4,9 @@ namespace HouseholdTasks.ViewModels.Tarefas
 {
     public class VisualizarDetalhesTarefaViewModel
     {
+        [Key]
+        public Guid Id { get; set; }
+
         [Display(Name = "Título")]
         public string Titulo { get; set; }
 
@@ -27,5 +30,27 @@ namespace HouseholdTasks.ViewModels.Tarefas
 
         [Display(Name = "Importância")]
         public ImportanciaViewModel Importancia { get; set; }
+
+        public VisualizarDetalhesTarefaViewModel(
+            Guid id,
+            string titulo,
+            string? descricao,
+            DateOnly dataCriacao,
+            DateOnly dataConclusao,
+            StatusViewModel status,
+            string? observacoes,
+            ResponsavelViewModel responsavel,
+            ImportanciaViewModel importancia)
+        {
+            Id = id;
+            Titulo = titulo;
+            Descricao = descricao;
+            DataCriacao = dataCriacao;
+            DataConclusao = dataConclusao;
+            Status = status;
+            Observacoes = observacoes;
+            Responsavel = responsavel;
+            Importancia = importancia;
+        }
     }
 }

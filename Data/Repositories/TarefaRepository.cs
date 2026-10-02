@@ -15,12 +15,16 @@ namespace HouseholdTasks.Data.Repositories
 
         public async Task<List<Tarefa>> ObterTodas()
         {
-            return await _context.Tarefas.ToListAsync();
+            return await _context.Tarefas
+                .Include(t => t.Responsavel)
+                .ToListAsync();
         }
 
         public async Task<Tarefa> ObterPorId(Guid id)
         {
-            return await _context.Tarefas.FirstOrDefaultAsync(t => t.Id == id);
+            return await _context.Tarefas
+                .Include(t => t.Responsavel)
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task<List<Tarefa>> ObterPorStatus(Status status)

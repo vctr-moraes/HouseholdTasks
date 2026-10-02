@@ -10,14 +10,11 @@
     @Html.DisplayFor(model => model.Nome)
 </h1>
 <br />
-<form asp-action="Delete">
-    <a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success fw-bolder me-3">Editar</a>
-    <input type="hidden" asp-for="Id" />
-    <button type="button" class="btn btn-danger fw-bolder me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Deletar
-    </button>
-</form>
+<a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
+<a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success fw-bolder me-3">Editar</a>
+<button type="button" class="btn btn-danger fw-bolder me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Deletar
+</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

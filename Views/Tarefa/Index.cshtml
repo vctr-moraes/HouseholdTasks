@@ -1,0 +1,75 @@
+@using HouseholdTasks.ViewModels.Tarefas
+
+@model IEnumerable<VisualizarTarefasViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .id-tarefa {
+        cursor: pointer;
+    }
+</style>
+
+<div class="d-flex flex-stack flex-wrap flex-sm-nowrap">
+    <h1>Tarefas</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-primary fw-bolder me-3">Adicionar</a>
+    </p>
+</div>
+<div class="card card-bordered">
+    <table class="table table-hover gs-7 gy-7 gx-7">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponsavelNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr class="id-tarefa py-5 fw-bold border-bottom border-gray-100 fs-4" data-tarefa="@item.Id">
+                    <td>
+                        @Html.DisplayFor(model => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ResponsavelNome)
+                    </td>
+                    <td>
+                        @{
+                            switch (@item.Status)
+                            {
+                                case StatusViewModel.Nova:
+                                    <span class="badge badge-secondary badge-lg">Nova</span>
+                                    break;
+                                case StatusViewModel.EmAndamento:
+                                    <span class="badge badge-primary badge-lg">Em Andamento</span>
+                                    break;
+                                case StatusViewModel.Concluida:
+                                    <span class="badge badge-success badge-lg">Concluída</span>
+                                    break;
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(".id-tarefa").click(function () {
+            const id_tarefa = $(this).data('tarefa');
+            window.location.href = "Tarefas/Detalhes/" + id_tarefa;
+        });
+    </script>
+}

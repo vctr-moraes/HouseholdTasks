@@ -1,0 +1,53 @@
+@using HouseholdTasks.ViewModels
+@using HouseholdTasks.ViewModels.Tarefas
+
+@model CriarTarefaViewModel
+
+@{
+    ViewData["Title"] = "Nova tarefa";
+}
+
+<h1>Nova tarefa</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titulo" class="form-label required"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="form-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacoes" class="form-label"></label>
+                <input asp-for="Observacoes" class="form-control" />
+                <span asp-validation-for="Observacoes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Responsavel" class="form-label required"></label>
+                <select asp-for="@Model.Responsavel" class="form-control" data-control="select2" data-hide-search="true" asp-items="@Model.Responsaveis" style="cursor: pointer;">
+                    <option value="" selected disabled>Selecionar</option>
+                </select>
+                <span asp-validation-for="@Model.Responsavel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Importancia" class="form-label required"></label>
+                <select asp-for="Importancia" class="form-control" data-control="select2" data-hide-search="true" asp-items="Html.GetEnumSelectList<ImportanciaViewModel>()" style="cursor: pointer;">
+                    <option value="" selected disabled>Selecionar</option>
+                </select>
+                <span asp-validation-for="Importancia" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary fw-bolder me-3" />
+            </div>
+        </form>
+    </div>
+</div>

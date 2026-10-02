@@ -1,0 +1,88 @@
+@model HouseholdTasks.ViewModels.Tarefas.VisualizarDetalhesTarefaViewModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<dl class="row">
+    <dt class = "col-sm-2">
+        
+    </dt>
+    <dd class = "col-sm-10">
+        <h1>
+            @Html.DisplayFor(model => model.Titulo)
+        </h1>
+    </dd>
+</dl>
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Descricao)
+    </dt>
+    <dd class = "col-sm-10">
+       @if (String.IsNullOrEmpty(@Model.Descricao))
+        {
+            <p class="text-muted">Nenhuma descrição disponível.</p>
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.Descricao)
+        }
+    </dd>
+</dl>
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Observacoes)
+    </dt>
+    <dd class = "col-sm-10">
+       @if (String.IsNullOrEmpty(@Model.Observacoes))
+        {
+            <p class="text-muted">Nenhuma observação disponível.</p>
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.Observacoes)
+        }
+    </dd>
+</dl>
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Responsavel)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Responsavel.Nome)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Importancia)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Importancia)
+    </dd>
+</dl>
+<a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
+<a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success fw-bolder me-3">Editar</a>
+<button type="button" class="btn btn-danger fw-bolder me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Deletar
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="exampleModalLabel">Deletar tarefa</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Tem certeza que deseja deletar?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light btn-active-secondary fw-bolder me-3" data-bs-dismiss="modal">Cancelar</button>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Deletar" class="btn btn-danger fw-bolder" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

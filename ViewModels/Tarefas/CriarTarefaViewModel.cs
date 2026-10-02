@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdTasks.ViewModels.Tarefas
 {
@@ -25,6 +26,9 @@ namespace HouseholdTasks.ViewModels.Tarefas
         [Display(Name = "Responsável")]
         [Required(ErrorMessage = "Informe o responsável")]
         public ResponsavelViewModel Responsavel { get; set; }
+
+        [Display(Name = "Responsável")]
+        public List<SelectListItem> Responsaveis { get; set; }
 
         [Display(Name = "Importância")]
         [Required(ErrorMessage = "Informe a importância")]
