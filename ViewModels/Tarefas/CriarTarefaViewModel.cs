@@ -25,10 +25,9 @@ namespace HouseholdTasks.ViewModels.Tarefas
 
         [Display(Name = "Responsável")]
         [Required(ErrorMessage = "Informe o responsável")]
-        public ResponsavelViewModel Responsavel { get; set; }
+        public Guid ResponsavelId { get; set; }
 
-        [Display(Name = "Responsável")]
-        public List<SelectListItem> Responsaveis { get; set; }
+        public IEnumerable<SelectListItem>? Responsaveis { get; set; }
 
         [Display(Name = "Importância")]
         [Required(ErrorMessage = "Informe a importância")]

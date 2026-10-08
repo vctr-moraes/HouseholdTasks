@@ -23,13 +23,11 @@ namespace HouseholdTasks.ViewModels.Tarefas
         [MaxLength(500, ErrorMessage = "As observações não podem ter mais de 500 caracteres.")]
         public string? Observacoes { get; set; }
 
-        /*public ResponsavelViewModel Responsavel { get; set; }*/
-        
         [Display(Name = "Responsável")]
         [Required(ErrorMessage = "Informe o responsável")]
         public Guid ResponsavelId { get; set; }
         
-        public List<SelectListItem> Responsaveis { get; set; }
+        public IEnumerable<SelectListItem>? Responsaveis { get; set; }
 
         [Display(Name = "Importância")]
         [Required(ErrorMessage = "Informe a importância")]
@@ -43,7 +41,7 @@ namespace HouseholdTasks.ViewModels.Tarefas
             string? descricao,
             string? observacoes,
             Guid responsavelId,
-            List<SelectListItem> responsaveis,
+            IEnumerable<SelectListItem> responsaveis,
             ImportanciaViewModel importancia)
         {
             Id = id;

@@ -74,7 +74,7 @@ public class TarefaController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Observacoes,Responsavel,Importancia")] CriarTarefaViewModel tarefaViewmodel)
+    public async Task<IActionResult> Create(CriarTarefaViewModel tarefaViewmodel)
     {
         if (!ModelState.IsValid)
         {
@@ -87,6 +87,8 @@ public class TarefaController : Controller
 
             return View(tarefaViewmodel);
         }
+        
+        var responsavel = await _responsavelRepository.ObterPorId(tarefaViewmodel.ResponsavelId);
 
         var tarefa = new Tarefa
         {
@@ -94,12 +96,9 @@ public class TarefaController : Controller
             Titulo = tarefaViewmodel.Titulo,
             Descricao = tarefaViewmodel.Descricao,
             Observacoes = tarefaViewmodel.Observacoes,
-            Responsavel = new Responsavel()
-            {
-                Id = tarefaViewmodel.Responsavel.Id,
-                Nome = tarefaViewmodel.Responsavel.Nome
-            },
-            Importancia = (Importancia)tarefaViewmodel.Importancia
+            Responsavel = responsavel,
+            Importancia = (Importancia)tarefaViewmodel.Importancia,
+            Status = Status.Nova
         };
 
         try
@@ -112,7 +111,7 @@ public class TarefaController : Controller
             return View(tarefaViewmodel);
         }
 
-        return View(tarefaViewmodel);
+        return RedirectToAction(nameof(Index));
     }
 
     public async Task<IActionResult> Edit(Guid id)
@@ -142,7 +141,7 @@ public class TarefaController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, [Bind("Id,Titulo,Descricao,Observacoes,ResponsavelId,Importancia")] AtualizarTarefaViewModel tarefaViewmodel)
+    public async Task<IActionResult> Edit(Guid id, AtualizarTarefaViewModel tarefaViewmodel)
     {
         if (!ModelState.IsValid)
         {
@@ -185,8 +184,6 @@ public class TarefaController : Controller
         }
 
         return RedirectToAction(nameof(Index));
-
-        /*return View(tarefaViewmodel);*/
     }
 
     public async Task<IActionResult> Delete(Guid id)
