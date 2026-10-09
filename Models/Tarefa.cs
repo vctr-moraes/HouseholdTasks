@@ -12,5 +12,11 @@
         public Importancia Importancia { get; set; }
         public Responsavel Responsavel { get; set; }
         public Guid ResponsavelId { get; set; }
+        
+        public void ConcluirTarefa()
+        {
+            Status = Status.Concluida;
+            DataConclusao = DateOnly.FromDateTime(DateTime.Now);
+        }
     }
 }

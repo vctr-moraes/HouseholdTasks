@@ -44,16 +44,16 @@
                     </td>
                     <td>
                         @{
-                            switch (@item.Status)
+                            switch (item.Status)
                             {
                                 case StatusViewModel.Nova:
                                     <span class="badge badge-secondary badge-lg">Nova</span>
                                     break;
                                 case StatusViewModel.EmAndamento:
-                                    <span class="badge badge-primary badge-lg">Em Andamento</span>
+                                    <span class="badge badge-success badge-lg">Em Andamento</span>
                                     break;
                                 case StatusViewModel.Concluida:
-                                    <span class="badge badge-success badge-lg">Concluída</span>
+                                    <span class="badge badge-primary badge-lg">Concluída</span>
                                     break;
                             }
                         }

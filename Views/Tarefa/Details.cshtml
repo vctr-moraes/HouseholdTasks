@@ -1,7 +1,19 @@
+@using HouseholdTasks.ViewModels.Tarefas
 @model HouseholdTasks.ViewModels.Tarefas.VisualizarDetalhesTarefaViewModel
 
 @{
     ViewData["Title"] = "Detalhes";
+}
+
+@{
+    if (Model.Status == StatusViewModel.Concluida)
+    {
+        <div class="alert alert-primary bg-light-primary d-flex align-items-center p-5">
+            <div class="d-flex flex-column">
+                <h4 class="mb-1 text-primary">Tarefa concluída em @Model.DataConclusao.ToString("dd/MM/yyyy")</h4>
+            </div>
+        </div>
+    }
 }
 
 <dl class="row">
@@ -58,21 +70,32 @@
         @Html.DisplayFor(model => model.Importancia)
     </dd>
 </dl>
-<a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
-<a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success fw-bolder me-3">Editar</a>
-<button type="button" class="btn btn-danger fw-bolder me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Deletar
-</button>
+
+<div>
+    <form asp-action="ConcluirTarefa" class="d-flex flex-stack flex-sm-nowrap">
+        <a asp-action="Index" class="btn btn-secondary fw-bolder me-3">Voltar</a>
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Concluir" class="btn btn-primary fw-bolder me-3" />
+        <div class="menu-item px-3">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success fw-bolder me-3">Editar</a>
+        </div>
+        <div class="menu-item px-3">
+            <button type="button" class="btn btn-danger fw-bolder me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Deletar
+            </button>
+        </div>
+    </form>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-danger" id="exampleModalLabel">Deletar tarefa</h4>
+                <h4 class="modal-title text-danger" id="exampleModalLabel">"@Html.DisplayFor(model => model.Titulo)"</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h5>Tem certeza que deseja deletar?</h5>
+                <h5>Tem certeza que deseja deletar a tarefa?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light btn-active-secondary fw-bolder me-3" data-bs-dismiss="modal">Cancelar</button>

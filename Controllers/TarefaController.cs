@@ -234,6 +234,23 @@ public class TarefaController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+    
+    [HttpPost, ActionName("ConcluirTarefa")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> ConcluirTarefa(Guid id)
+    {
+        var tarefa = _repository.ObterPorId(id).Result;
+
+        if (tarefa == null)
+        {
+            return NotFound("Tarefa não encontrada.");
+        }
+
+        tarefa.ConcluirTarefa();
+
+        _repository.Atualizar(tarefa);
+        return RedirectToAction(nameof(Details), new { id = tarefa.Id });
+    }
 
     private async Task<bool> CriarTarefaViewModelExists(Guid id)
     {
